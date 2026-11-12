@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kishore Gandhi | DevOps Engineer - OpenShift</title>
+<meta name="description" content="Kishore Gandhi - DevOps Engineer specialising in Red Hat OpenShift, CI/CD, GitOps and DevSecOps.">
+<style>
+  :root {
+    --blue: #1f4e9a;
+    --blue-deep: #14376f;
+    --blue-soft: #e4ecf8;
+    --blue-mist: #f1f5fb;
+    --off: #faf8f3;
+    --paper: #ffffff;
+    --ink: #1b2233;
+    --muted: #697287;
+    --line: #e3e6ec;
+    --shadow: 0 1px 2px rgba(20,55,111,0.06), 0 12px 30px -18px rgba(20,55,111,0.25);
+    --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  body { margin: 0; background: var(--off); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.6; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+  .icon-sm { width: 15px; height: 15px; }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 40; background: rgba(250,248,243,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-in { max-width: 1100px; margin: 0 auto; padding: 0 28px; height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .mark { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--blue-deep); }
+  .mark span.sq { width: 30px; height: 30px; background: var(--blue); color: #fff; border-radius: 8px; display: grid; place-items: center; font-size: 13px; letter-spacing: 0.5px; }
+  .tabs { display: flex; gap: 4px; }
+  .tabs a { color: var(--muted); font-size: 14px; padding: 7px 12px; border-radius: 8px; transition: background 0.2s, color 0.2s; }
+  .tabs a:hover { background: var(--blue-soft); color: var(--blue-deep); text-decoration: none; }
+  .tabs a.on { background: var(--blue); color: #fff; }
+  .actions { display: flex; gap: 8px; }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); background: #fff; color: var(--ink);
+    padding: 8px 14px; border-radius: 10px; font: inherit; font-size: 14px; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+  .btn-ghost.ok { border-color: #2e8b57; color: #2e8b57; }
+
+  /* ---------- Layout ---------- */
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+  .hero { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; padding: 56px 0 28px; align-items: start; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--blue); background: var(--blue-soft); padding: 6px 12px; border-radius: 999px; font-weight: 600; }
+  .eyebrow .pulse { width: 8px; height: 8px; border-radius: 50%; background: #2e8b57; box-shadow: 0 0 0 0 rgba(46,139,87,0.5); animation: pulse 2s infinite; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(46,139,87,0); } 100% { box-shadow: 0 0 0 0 rgba(46,139,87,0); } }
+  .hero h1 { font-size: 52px; line-height: 1.05; letter-spacing: -1.2px; margin: 18px 0 10px; color: var(--blue-deep); font-weight: 800; }
+  .role { font-size: 19px; color: var(--blue); font-weight: 600; margin: 0 0 16px; min-height: 1.6em; }
+  .role .caret { display: inline-block; width: 2px; height: 1em; background: var(--blue); margin-left: 3px; vertical-align: -0.15em; animation: blink 1s steps(2) infinite; }
+  @keyframes blink { to { visibility: hidden; } }
+  .summary { color: #3b4358; max-width: 620px; margin: 0 0 22px; }
+  .cta { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 10px; font-weight: 600; font-size: 14px; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; cursor: pointer; border: 1px solid transparent; }
+  .btn:hover { transform: translateY(-2px); text-decoration: none; }
+  .btn-blue { background: var(--blue); color: #fff; box-shadow: 0 10px 22px -12px rgba(31,78,154,0.8); }
+  .btn-blue:hover { background: var(--blue-deep); color: #fff; }
+  .btn-line { background: #fff; color: var(--blue-deep); border-color: var(--line); }
+  .btn-line:hover { border-color: var(--blue); }
+
+  /* Profile card */
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); padding: 24px; }
+  .card h3 { margin: 0 0 2px; font-size: 19px; color: var(--blue-deep); }
+  .contact { display: grid; gap: 12px; }
+  .contact .row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 10px; background: var(--blue-mist); color: var(--ink); font-size: 14px; transition: background 0.2s, transform 0.2s; }
+  .contact .row:hover { background: var(--blue-soft); transform: translateX(3px); text-decoration: none; }
+  .contact .row svg { color: var(--blue); }
+  .contact .row small { display: block; color: var(--muted); font-size: 11px; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; }
+
+
+  /* Sections */
+  section { padding: 56px 0 4px; scroll-margin-top: 90px; }
+  .sec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .sec-head .ic { width: 38px; height: 38px; border-radius: 10px; background: var(--blue-soft); color: var(--blue); display: grid; place-items: center; }
+  .sec-head h2 { margin: 0; font-size: 24px; color: var(--blue-deep); letter-spacing: -0.4px; }
+  .sec-head p { margin: 0; color: var(--muted); font-size: 14px; }
+
+  /* Experience accordion */
+  .exp { display: grid; gap: 12px; }
+  .job { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; transition: border-color 0.25s; }
+  .job:hover { border-color: #b9c9e6; }
+  .job[open] { border-color: var(--blue); }
+  .job summary { list-style: none; cursor: pointer; padding: 20px 24px; display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: center; }
+  .job summary::-webkit-details-marker { display: none; }
+  .job h3 { margin: 0; font-size: 17px; color: var(--blue-deep); }
+  .job .co { margin: 2px 0 0; font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .job .when { font-size: 13px; color: var(--blue); background: var(--blue-soft); padding: 4px 10px; border-radius: 999px; white-space: nowrap; font-weight: 600; }
+  .job .chev { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; color: var(--muted); transition: transform 0.3s, background 0.2s; margin-left: 10px; }
+  .job[open] .chev { transform: rotate(180deg); background: var(--blue); color: #fff; border-color: var(--blue); }
+  .job .meta { display: flex; align-items: center; gap: 10px; justify-self: end; }
+  .job .body { padding: 0 24px 22px; }
+  .job .body .sub { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+  .job ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 9px; }
+  .job li { position: relative; padding-left: 22px; font-size: 14.5px; color: #3b4358; }
+  .job li::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 3px; background: var(--blue); }
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .tag { font-size: 12.5px; padding: 4px 10px; background: var(--blue-mist); color: var(--blue-deep); border-radius: 7px; border: 1px solid var(--blue-soft); }
+
+  /* Skills */
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+  .fbtn { border: 1px solid var(--line); background: #fff; color: var(--muted); padding: 7px 14px; border-radius: 999px; font: inherit; font-size: 13.5px; cursor: pointer; transition: all 0.2s; }
+  .fbtn:hover { color: var(--blue); border-color: #b9c9e6; }
+  .fbtn.on { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .skill { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; box-shadow: var(--shadow); transition: transform 0.25s, opacity 0.3s; }
+  .skill:hover { transform: translateY(-2px); }
+  .skill.hide { display: none; }
+  .skill .top { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  .skill .top .ic { width: 32px; height: 32px; border-radius: 9px; background: var(--blue-soft); color: var(--blue); display: grid; place-items: center; }
+  .skill h4 { margin: 0; font-size: 15px; color: var(--blue-deep); }
+  .skill .d { margin: 0 0 12px; font-size: 13px; color: var(--muted); }
+  .meter { height: 6px; background: var(--blue-mist); border-radius: 6px; overflow: hidden; }
+  .meter i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--blue), #6d9be0); border-radius: 6px; transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+  .pct { font-size: 12px; color: var(--muted); text-align: right; margin-top: 5px; }
+
+  /* Certs & education */
+  .two { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; }
+  .certs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .cert { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 18px; box-shadow: var(--shadow); transition: transform 0.25s, border-color 0.25s; display: flex; gap: 14px; }
+  .cert:hover { transform: translateY(-3px); border-color: var(--blue); }
+  .cert .medal { width: 42px; height: 42px; border-radius: 12px; background: var(--blue-soft); color: var(--blue); display: grid; place-items: center; flex-shrink: 0; }
+  .cert h4 { margin: 0 0 4px; font-size: 14.5px; color: var(--blue-deep); }
+  .cert p { margin: 0; font-size: 12.5px; color: var(--muted); }
+  .edu { background: var(--blue-deep); color: #e8eefb; border-radius: 16px; padding: 26px; box-shadow: var(--shadow); }
+  .edu .medal { width: 46px; height: 46px; border-radius: 12px; background: rgba(255,255,255,0.12); display: grid; place-items: center; margin-bottom: 16px; }
+  .edu h4 { margin: 0 0 6px; font-size: 18px; }
+  .edu p { margin: 0; color: #bccbe6; font-size: 14px; }
+
+  /* Contact band */
+  .band { margin: 60px 0 40px; background: #fff; border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); padding: 34px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .band h2 { margin: 0 0 4px; font-size: 24px; color: var(--blue-deep); }
+  .band p { margin: 0; color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); padding: 22px 0 36px; color: var(--muted); font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  .to-top { position: fixed; right: 22px; bottom: 22px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--blue); color: #fff; cursor: pointer; box-shadow: 0 10px 24px -10px rgba(31,78,154,0.9); opacity: 0; pointer-events: none; transform: translateY(8px); transition: all 0.25s; display: grid; place-items: center; }
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 16px); background: var(--blue-deep); color: #fff; padding: 11px 18px; border-radius: 10px; font-size: 14px; box-shadow: 0 12px 28px -12px rgba(20,55,111,0.6); opacity: 0; pointer-events: none; transition: all 0.25s; z-index: 80; max-width: calc(100% - 32px); text-align: center; }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+
+  .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 40px; }
+    .skills, .two, .certs { grid-template-columns: 1fr; }
+    .tabs { display: none; }
+  }
+  @media (max-width: 560px) {
+    .side-col { gap: 12px; }
+    .status-card { padding: 16px 18px; }
+    .status-head { margin-bottom: 10px; }
+    .status-list { gap: 10px; }
+    .stat-card { display: flex; align-items: baseline; gap: 12px; padding: 14px 18px; }
+    .stat-card .n { font-size: 30px; }
+    .stat-card .l { margin-top: 0; }
+    .topbar-in, .wrap { padding: 0 18px; }
+    .actions .btn-ghost span { display: none; }
+    .job summary { grid-template-columns: 1fr; }
+    .job .meta { justify-self: start; }
+  }
+  @media (max-width: 560px) {
+    .sectors { gap: 6px; }
+    .sector { padding: 9px 12px; font-size: 13px; }
+  }
+
+  /* Hero side column: profile, status and experience boxes */
+  .hero-extra { margin-top: 36px; display: grid; gap: 26px; }
+  .mini-head { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); font-weight: 700; margin-bottom: 12px; }
+  .sectors { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .sector { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; height: auto; padding: 10px 14px; text-align: left; line-height: 1.3; background: var(--blue-mist); border: 1px solid var(--blue-soft); border-radius: 12px; font-size: 14px; font-weight: 600; color: var(--blue-deep); overflow-wrap: anywhere; }
+  .sector svg { color: var(--blue); }
+  .side-col { display: grid; gap: 16px; align-content: start; }
+  .status-card { padding: 24px; margin: 0; }
+  .status-head { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); font-weight: 700; margin-bottom: 14px; }
+  .status-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .status-list li { display: flex; gap: 12px; align-items: flex-start; }
+  .status-list svg { color: var(--blue); margin-top: 3px; }
+  .status-list b { display: block; font-size: 14.5px; color: var(--blue-deep); font-weight: 600; }
+  .status-list span { font-size: 13px; color: var(--muted); }
+  .stat-card { padding: 24px; margin: 0; }
+  .stat-card .n { font-size: 40px; font-weight: 800; color: var(--blue); line-height: 1; letter-spacing: -0.5px; }
+  .stat-card .l { margin-top: 8px; font-size: 14px; color: var(--muted); }
+
+  /* Red Hat certified badge (text badge, not the official logo artwork) */
+  .rh-badge { display: flex; align-items: center; gap: 14px; margin: 0 0 22px; padding: 14px 16px; border-radius: 12px; background: var(--blue-mist); border: 1px solid var(--blue-soft); }
+  .rh-logo { width: 80px; height: 40px; display: block; flex-shrink: 0; }
+  .rh-badge b { display: block; font-size: 14px; color: var(--blue-deep); margin-bottom: 4px; }
+  .rh-badge small { display: block; font-size: 11.5px; line-height: 1.4; color: var(--muted); }
+
+  /* Minimal skills: plain names only, no icons, meters or percentages */
+  .skills { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0 28px; }
+  .skill { background: none; border: none; border-bottom: 1px solid var(--line); border-radius: 0; box-shadow: none; padding: 12px 0; }
+  .skill:hover { transform: none; }
+  .skill .top { margin: 0; gap: 10px; }
+  .skill .top .ic, .skill .d, .skill .meter, .skill .pct { display: none; }
+  .skill .top::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+  .skill h4 { font-size: 15px; font-weight: 500; color: var(--ink); }
+  .filters { margin-bottom: 14px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .js .reveal { opacity: 1; transform: none; }
+  }
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { padding: 0; }
+    .topbar, .to-top, .filters, .actions, .tabs, .band, .cta, .eyebrow { display: none !important; }
+    .wrap { max-width: none; padding: 12mm 14mm; }
+    .hero { grid-template-columns: 1fr; gap: 14px; padding: 0 0 10px; }
+    .hero h1 { font-size: 30px; margin: 0 0 2px; }
+    .role { font-size: 14px; margin: 0 0 8px; min-height: 0; }
+    .summary { font-size: 11.5px; line-height: 1.5; margin: 0 0 4px; max-width: none; }
+    .hero-extra { margin-top: 10px; gap: 0; }
+    .mini-head { margin-bottom: 6px; }
+    .sectors { grid-template-columns: 1fr; gap: 4px; }
+    .sector { height: auto; min-height: 0; padding: 4px 8px; font-size: 10px; gap: 8px; }
+    .side-col { grid-template-columns: 1fr 1fr 1fr; gap: 10px; align-items: stretch; }
+    .side-col .card { box-shadow: none; padding: 12px 14px; margin: 0; break-inside: avoid; }
+    .rh-badge { margin: 0 0 10px; padding: 8px 10px; }
+    .rh-logo { width: 64px; height: 32px; }
+    .rh-badge b { font-size: 11.5px; margin-bottom: 2px; }
+    .rh-badge small { font-size: 9.5px; }
+    .contact { gap: 6px; }
+    .contact .row { padding: 6px 8px; font-size: 10px; gap: 8px; }
+    .contact .row small { font-size: 8px; margin-bottom: 1px; }
+    .status-head { font-size: 9.5px; margin-bottom: 8px; }
+    .status-list { gap: 6px; }
+    .status-list b { font-size: 10.5px; }
+    .stat-card .n { font-size: 26px; }
+    .stat-card .l { font-size: 10px; margin-top: 4px; }
+    section { padding: 16px 0 0; break-inside: auto; }
+    .sec-head { margin-bottom: 8px; break-after: avoid; }
+    .sec-head h2 { font-size: 16px; }
+    .sec-head p { font-size: 10px; }
+    .sec-head .ic { width: 26px; height: 26px; }
+    .job { break-inside: avoid; margin-bottom: 6px; box-shadow: none; }
+    .job summary { padding: 8px 12px; }
+    .job .body { display: block; padding: 0 12px 8px; }
+    .job h3 { font-size: 12px; }
+    .job .co { font-size: 10px; margin-top: 1px; }
+    .job .when { font-size: 9.5px; padding: 2px 8px; }
+    .job .chev { display: none; }
+    .job .body .sub { font-size: 9.5px; margin-bottom: 4px; }
+    .job li { font-size: 9.8px; line-height: 1.45; padding-left: 16px; }
+    .job li::before { top: 6px; width: 6px; height: 6px; }
+    .job ul { gap: 3px; }
+    .tags { margin-top: 6px; gap: 5px; }
+    .tag { font-size: 9px; padding: 2px 6px; }
+    .skills { grid-template-columns: repeat(3, 1fr); gap: 0 16px; break-inside: avoid; }
+    .skill { padding: 4px 0; break-inside: avoid; }
+    .skill h4 { font-size: 10px; }
+    .skill .top::before { width: 5px; height: 5px; }
+    .two { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .certs { grid-template-columns: 1fr 1fr; gap: 6px; }
+    .cert { padding: 7px 9px; box-shadow: none; break-inside: avoid; }
+    .cert .medal { width: 26px; height: 26px; }
+    .cert .medal svg { width: 12px; height: 12px; }
+    .cert h4 { font-size: 9.5px; margin-bottom: 2px; }
+    .cert p { font-size: 8.5px; }
+    .edu { padding: 10px 12px; box-shadow: none; break-inside: avoid; }
+    .edu .medal { width: 30px; height: 30px; margin-bottom: 6px; }
+    .edu h4 { font-size: 12px; }
+    .edu p { font-size: 9.5px; }
+    footer { padding: 8px 0 0; font-size: 8.5px; border-top: 1px solid var(--line); }
+    footer .wrap { padding: 0 14mm; }
+    .js .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 11c0-1.5 3-2.5 3 1v4"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a5 5 0 01-.6-9.97A7 7 0 0120 10.5 4.5 4.5 0 0117.5 18H7z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-cog" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 2l10 5-10 5L2 7l10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 9l3 3-3 3M13 15h5"/></symbol>
+  <symbol id="i-git" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="8" r="2.5"/><path d="M6 8.5v7M18 10.5c0 4-6 3-10.5 6.5"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 7h.01M7 18h.01"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4.5A2.5 2.5 0 016.5 2H20v17H6.5A2.5 2.5 0 004 21.5v-17z"/><path d="M4 21.5A2.5 2.5 0 006.5 24H20v-5"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></symbol>
+  <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 10v9M9 10v9M15 10v9M19 10v9M3 21h18"/></symbol>
+  <symbol id="i-signal" viewBox="0 0 24 24"><path d="M12 12v9M8 21h8M5 8a10 10 0 0114 0M8 11a5 5 0 018 0"/><circle cx="12" cy="10" r="1.5"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.4 11h10.2L20 7H7"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></symbol>
+  <symbol id="i-package" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></symbol>
+</svg>
+
+<nav class="topbar">
+  <div class="topbar-in">
+    <div class="mark"><span class="sq">KG</span> Kishore Gandhi</div>
+    <div class="tabs" id="tabs">
+      <a href="#about" data-spy>About</a>
+      <a href="#experience" data-spy>Experience</a>
+      <a href="#skills" data-spy>Skills</a>
+      <a href="#certs" data-spy>Certifications</a>
+      <a href="#contact" data-spy>Contact</a>
+    </div>
+    <div class="actions">
+      <button class="btn-ghost" id="copyBtn"><svg class="icon icon-sm"><use href="#i-copy"/></svg><span id="copyLabel">Copy email</span></button>
+      <button class="btn-ghost" id="pdfBtn" title="Download this resume as PDF"><svg class="icon icon-sm"><use href="#i-download"/></svg><span>Download PDF</span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- About / hero -->
+  <header class="hero" id="about">
+    <div>
+      <span class="eyebrow"><span class="pulse"></span> Open to DevOps &amp; OpenShift roles</span>
+      <h1>Kishore Gandhi</h1>
+      <p class="role">Platform Specialist - DevOps + OpenShift</p>
+      <p class="summary">Driven and results-oriented OpenShift DevOps Engineer with 5 years of experience in designing, implementing, and maintaining scalable, containerized systems across diverse industries. Proven expertise in deploying, managing, and optimizing OpenShift clusters, containerized applications and CI/CD pipelines in cloud environments.</p>
+      <div class="cta">
+        <a class="btn btn-blue" href="#experience"><svg class="icon icon-sm"><use href="#i-briefcase"/></svg> View experience</a>
+        <a class="btn btn-line" href="https://linkedin.com/in/kishoregandhidevops" target="_blank" rel="noopener"><svg class="icon icon-sm"><use href="#i-linkedin"/></svg> LinkedIn</a>
+      </div>
+
+      <div class="hero-extra">
+        <div>
+          <div class="mini-head">Sectors worked in</div>
+          <div class="sectors">
+            <div class="sector"><svg class="icon icon-sm"><use href="#i-bank"/></svg>Banking</div>
+            <div class="sector"><svg class="icon icon-sm"><use href="#i-signal"/></svg>Telecommunications</div>
+            <div class="sector"><svg class="icon icon-sm"><use href="#i-cart"/></svg>E-commerce</div>
+            <div class="sector"><svg class="icon icon-sm"><use href="#i-shield"/></svg>Defence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="side-col">
+    <div class="card reveal">
+      <div class="rh-badge" title="Red Hat certified">
+        <svg id="uuid-09a2bc6f-7a56-4bdf-b138-38666ac3f986" xmlns="http://www.w3.org/2000/svg" class="rh-logo" width="80" height="40" role="img" aria-label="Red Hat" viewBox="0 0 360 180"><defs><style>.uuid-8e41a37b-2e93-4c67-8ea1-d04e612de36e{fill:#fff;}.uuid-ad609a1b-2185-49a9-8089-a5e5782581d4{fill:#151515;}.uuid-3416d248-1509-407f-833c-519dbb95cd5c{fill:#e00;}</style></defs><rect class="uuid-ad609a1b-2185-49a9-8089-a5e5782581d4" y="0" width="360" height="180" rx="10" ry="10"/><g id="uuid-8f874d2f-6cc3-4ca5-bab4-b7ca31ac3ebc"><path class="uuid-3416d248-1509-407f-833c-519dbb95cd5c" d="M111.26757,94.22112c4.80493,0,11.75691-.99095,11.75691-6.70616.01436-.44109-.02562-.88226-.11907-1.31358l-2.86145-12.42907c-.66063-2.7347-1.2406-3.9753-6.04169-6.37585-3.72565-1.90507-11.84142-5.05075-14.24196-5.05075-2.23539,0-2.8845,2.88065-5.55006,2.88065-2.5657,0-4.47078-2.15089-6.87132-2.15089-2.30452,0-3.80631,1.57092-4.96625,4.80109,0,0-3.23017,9.11055-3.64499,10.43181-.06593.24263-.09443.4939-.0845.74513,0,3.54129,13.94237,15.15224,32.62438,15.15224M123.76193,89.83484c.66447,3.14568.66447,3.47599.66447,3.8908,0,5.37722-6.04554,8.36158-13.9923,8.36158-17.95992.01152-33.69214-10.51247-33.69214-17.46829-.00104-.96822.19635-1.92638.57997-2.81536-6.46035.32263-14.82193,1.47489-14.82193,8.85705,0,12.09107,28.64907,26.99366,51.33327,26.99366,17.39147,0,21.77775-7.86611,21.77775-14.0768,0-4.88559-4.22496-10.43181-11.84141-13.74264"/><path d="M123.76193,89.83484c.66447,3.14568.66447,3.47599.66447,3.8908,0,5.37722-6.04554,8.36158-13.9923,8.36158-17.95992.01152-33.69214-10.51247-33.69214-17.46829-.00104-.96822.19635-1.92638.57997-2.81536l1.40576-3.47983c-.06439.23768-.09287.48366-.0845.72977,0,3.54129,13.94237,15.15224,32.62438,15.15224,4.80493,0,11.75691-.99095,11.75691-6.70616.01436-.44109-.02562-.88226-.11907-1.31358l.85651,3.64883Z"/><path class="uuid-8e41a37b-2e93-4c67-8ea1-d04e612de36e" d="M284.97874,97.79697c0,4.5668,2.74623,6.78682,7.75472,6.78682,1.54205-.03839,3.07448-.25492,4.5668-.64527v-5.29656c-.95382.30227-1.94925.45263-2.94979.44554-2.06255,0-2.82688-.64527-2.82688-2.58491v-8.11576h5.9764v-5.45404h-5.9764v-6.91357l-6.52948,1.41344v5.50013h-4.33636v5.45404h4.32098v9.41014ZM264.62211,97.91988c0-1.41344,1.41728-2.10096,3.55665-2.10096,1.30766.0076,2.60982.17005,3.87927.48395v2.74622c-1.25103.6833-2.65755,1.03129-4.08285,1.01015-2.09713,0-3.35307-.80658-3.35307-2.13937M266.61937,104.66445c2.30452,0,4.16352-.48395,5.89958-1.65542v1.29438h6.46035v-13.69656c0-5.20822-3.51056-8.06583-9.3679-8.06583-3.27243,0-6.50644.76817-9.98627,2.34293l2.34292,4.80877c2.50426-1.0524,4.60905-1.69767,6.4642-1.69767,2.68861,0,4.07901,1.04856,4.07901,3.19176v1.04856c-1.58293-.40975-3.21209-.61372-4.84718-.60686-5.49629,0-8.80712,2.30452-8.80712,6.42578,0,3.75637,2.98821,6.62166,7.75472,6.62166M231.10665,104.31493h6.94814v-11.08092h11.63401v11.0694h6.96735v-28.27651h-6.94046v10.86583h-11.634v-10.86583h-6.94815l-.02689,28.28803ZM204.6584,93.5989c0-3.0727,2.42359-5.41563,5.61535-5.41563,1.66055-.03367,3.27299.55865,4.51687,1.65925v7.4705c-1.21721,1.15007-2.84313,1.7667-4.51687,1.71303-3.14952,0-5.61535-2.34293-5.61535-5.41179M214.87896,104.31878h6.46418v-29.70532l-6.52948,1.41344v8.03895c-1.66219-.94233-3.5434-1.42985-5.45404-1.41344-6.21837,0-11.10781,4.80493-11.10781,10.94649-.07433,5.99209,4.72296,10.90989,10.71505,10.98422.06434.0008.12868.00102.19303.00068,2.06053.00983,4.07009-.64029,5.73442-1.85514l-.01534,1.59013ZM185.2159,87.88752c2.0587,0,3.79478,1.33278,4.4823,3.39149h-8.91083c.64526-2.124,2.26227-3.39149,4.42853-3.39149M174.20411,93.64883c0,6.22221,5.08916,11.0694,11.63016,11.0694,3.59505,0,6.22222-.97174,8.93003-3.23401l-4.32483-3.84087c-1.01015,1.0524-2.50425,1.61701-4.27874,1.61701-2.28412.06433-4.37233-1.28354-5.25431-3.39149h15.22906v-1.62469c0-6.78682-4.56296-11.67241-10.78517-11.67241-6.05974-.09143-11.04625,4.74683-11.13768,10.80657-.00131.08632-.00159.17266-.00086.25898M162.93884,81.96489c2.30452,0,3.59505,1.45185,3.59505,3.19177s-1.29053,3.19176-3.59505,3.19176h-6.87132v-6.38353h6.87132ZM149.11169,104.30341h6.94814v-10.30122h5.28888l5.33498,10.30122h7.77777l-6.22222-11.31137c3.23506-1.31568,5.34538-4.46595,5.33113-7.95829,0-5.08916-3.99835-9.00685-9.98627-9.00685h-14.47241v28.27651Z"/></g></svg>
+        <div><b>Red Hat Certified</b><small>RHCSA · RHCE · OpenShift Administrator</small></div>
+      </div>
+      <div class="contact">
+        <a class="row" href="mailto:kishoregandhipetro@gmail.com"><svg class="icon icon-sm"><use href="#i-mail"/></svg><div><small>Email</small>kishoregandhipetro@gmail.com</div></a>
+        <div class="row"><svg class="icon icon-sm"><use href="#i-pin"/></svg><div><small>Location</small>Dubai Silicon Oasis, Dubai, UAE</div></div>
+        <a class="row" href="https://linkedin.com/in/kishoregandhidevops" target="_blank" rel="noopener"><svg class="icon icon-sm"><use href="#i-linkedin"/></svg><div><small>LinkedIn</small>linkedin.com/in/kishoregandhidevops</div></a>
+      </div>
+    </div>
+    <div class="card status-card reveal">
+      <div class="status-head">UAE Residency &amp; Licence</div>
+      <ul class="status-list">
+        <li><svg class="icon icon-sm"><use href="#i-check"/></svg><div><b>Valid UAE Employment Visa</b></div></li>
+        <li><svg class="icon icon-sm"><use href="#i-check"/></svg><div><b>UAE Driving Licence</b></div></li>
+      </ul>
+    </div>
+    <div class="card stat-card reveal">
+      <div class="n" data-count="5" data-suffix="+">0</div>
+      <div class="l">Years of experience</div>
+    </div>
+    </aside>
+  </header>
+
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="sec-head reveal">
+      <div class="ic"><svg class="icon"><use href="#i-briefcase"/></svg></div>
+      <div><h2>Experience</h2><p>Select a role to see details</p></div>
+    </div>
+
+    <div class="exp">
+      <details class="job reveal" open>
+        <summary>
+          <div>
+            <h3>Platform Specialist - DevOps + OpenShift</h3>
+            <p class="co"><svg class="icon icon-sm"><use href="#i-globe"/></svg> INTEGRA TECHNOLOGIES - Dubai, UAE</p>
+          </div>
+          <div class="meta"><span class="when">Mar 2026 - Present</span><span class="chev"><svg class="icon icon-sm"><use href="#i-chevron"/></svg></span></div>
+        </summary>
+        <div class="body">
+          <p class="sub">Clients: UAE government organizations and banks.</p>
+          <ul>
+            <li>Installed and administered OpenShift + Virtualization clusters (v4.22+), ensuring high performance, security and availability.</li>
+            <li>Worked across multiple Kubernetes platforms with end-to-end CI/CD implementation, DC/DR backup and recovery solutions for critical workloads.</li>
+            <li>Conducted high-level technical discussions with customers to gather requirements, translate them into HLD/LLD, implement the solution and handle project handover.</li>
+          </ul>
+          <div class="tags"><span class="tag">OpenShift Virtualization</span><span class="tag">DC/DR</span><span class="tag">CI/CD</span><span class="tag">HLD/LLD</span></div>
+        </div>
+      </details>
+
+      <details class="job reveal">
+        <summary>
+          <div>
+            <h3>DevOps Specialist - OpenShift</h3>
+            <p class="co"><svg class="icon icon-sm"><use href="#i-globe"/></svg> IBM INDIA PRIVATE LIMITED - Bangalore, India</p>
+          </div>
+          <div class="meta"><span class="when">Mar 2024 - Mar 2026</span><span class="chev"><svg class="icon icon-sm"><use href="#i-chevron"/></svg></span></div>
+        </summary>
+        <div class="body">
+          <p class="sub">Clients: Leading banking, e-commerce, telecommunications and defence sector projects.</p>
+          <ul>
+            <li>Installed and configured OpenShift clusters (versions 4.16 to 4.20+) across bare metal and cloud environments, ensuring stable, secure, production-ready platforms.</li>
+            <li>Administered OpenShift clusters (versions 4.12 to 4.20+), ensuring high performance, security and availability.</li>
+            <li>Installed and managed IBM CP4I, ACE, APIC, DataPower, MQ, EventStreams, CP4D and CP4AIOps.</li>
+            <li>Streamlined development and deployment workflows using CI/CD and DevOps practices.</li>
+            <li>Managed production clusters and implemented automated backups for critical data protection.</li>
+            <li>Automated provisioning and lifecycle management of cloud and on-premises infrastructure using Infrastructure as Code.</li>
+            <li>Designed and implemented robust CI/CD pipelines to accelerate application delivery and reduce human error.</li>
+            <li>Proficient in OpenShift administration including cluster setup, user and project management and performance tuning.</li>
+            <li>Worked in agile teams to improve system reliability, scalability and cross-functional collaboration.</li>
+          </ul>
+          <div class="tags"><span class="tag">Red Hat OpenShift</span><span class="tag">GitOps</span><span class="tag">ArgoCD</span><span class="tag">Helm</span><span class="tag">DevSecOps</span><span class="tag">CP4I</span><span class="tag">CP4AIOps</span><span class="tag">IBM ACE</span><span class="tag">IBM MQ</span><span class="tag">EventStreams</span></div>
+        </div>
+      </details>
+
+      <details class="job reveal">
+        <summary>
+          <div>
+            <h3>Junior Engineer - DevOps + OpenShift</h3>
+            <p class="co"><svg class="icon icon-sm"><use href="#i-globe"/></svg> National Stock Exchange IT (NSEIT) - Chennai, India</p>
+          </div>
+          <div class="meta"><span class="when">Sep 2022 - Feb 2024</span><span class="chev"><svg class="icon icon-sm"><use href="#i-chevron"/></svg></span></div>
+        </summary>
+        <div class="body">
+          <p class="sub">Project: Middleware (Indian Bank)</p>
+          <ul>
+            <li>Implemented CI/CD pipelines using Jenkins and GitLab, automating build, test and deployment workflows.</li>
+            <li>Provided infrastructure-level support for bare-metal OpenShift clusters, ensuring platform stability and availability.</li>
+            <li>Monitored system health, performed routine maintenance and applied patches across UAT and production environments.</li>
+            <li>Investigated and resolved platform-level issues including node failures, storage alerts and network disruptions.</li>
+            <li>Coordinated with application teams to validate environment readiness and supported middleware deployments.</li>
+            <li>Maintained logging and monitoring stacks (ELK, Prometheus) for performance insights and alerting.</li>
+            <li>Supported backup and recovery operations, including DC-DR activities.</li>
+          </ul>
+          <div class="tags"><span class="tag">AWS</span><span class="tag">Red Hat OpenShift</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">ELK</span><span class="tag">Jenkins</span><span class="tag">Nexus</span><span class="tag">GitLab</span></div>
+        </div>
+      </details>
+
+      <details class="job reveal">
+        <summary>
+          <div>
+            <h3>DevOps Engineer</h3>
+            <p class="co"><svg class="icon icon-sm"><use href="#i-globe"/></svg> Gestalt Designs Pvt Ltd - Chennai, India</p>
+          </div>
+          <div class="meta"><span class="when">Sep 2021 - Sep 2022</span><span class="chev"><svg class="icon icon-sm"><use href="#i-chevron"/></svg></span></div>
+        </summary>
+        <div class="body">
+          <p class="sub">Client: Synergy Decor (E-commerce) · Project: Konnectmojo</p>
+          <ul>
+            <li>Provisioned a Kubernetes cluster on AWS using Terraform and was a core member of the team responsible for end-to-end DevOps automation on AWS.</li>
+            <li>Managed containerized workloads with Docker and Kubernetes, optimising resource utilisation, scaling applications dynamically and ensuring high availability.</li>
+            <li>Managed AWS infrastructure (EC2, IAM, EKS, ECR, S3, Route 53, CloudWatch) and designed secure networks using VPCs, subnets, gateways and routing.</li>
+            <li>Automated GitLab, database and ETCD backups via Jenkins.</li>
+            <li>Developed CI/CD pipelines and integrated Argo CD for seamless deployments.</li>
+            <li>Integrated SonarQube, JMeter and Newman for automated code, performance and API testing.</li>
+          </ul>
+          <div class="tags"><span class="tag">AWS</span><span class="tag">EKS</span><span class="tag">Argo CD</span><span class="tag">Terraform</span><span class="tag">Ansible</span><span class="tag">JFrog</span><span class="tag">GitLab</span><span class="tag">SonarCloud</span><span class="tag">RHEL</span></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="sec-head reveal">
+      <div class="ic"><svg class="icon"><use href="#i-layers"/></svg></div>
+      <div><h2>Skills</h2><p>Filter by area of expertise</p></div>
+    </div>
+
+    <div class="filters reveal" role="group" aria-label="Filter skills">
+      <button class="fbtn on" data-f="all">All</button>
+      <button class="fbtn" data-f="platform">Platforms</button>
+      <button class="fbtn" data-f="automation">Automation &amp; IaC</button>
+      <button class="fbtn" data-f="cicd">CI/CD &amp; GitOps</button>
+      <button class="fbtn" data-f="cloud">Cloud</button>
+      <button class="fbtn" data-f="ibm">IBM &amp; Middleware</button>
+    </div>
+
+    <div class="skills">
+      <div class="skill reveal" data-c="platform"><div class="top"><span class="ic"><svg class="icon icon-sm"><use href="#i-layers"/></svg></span><h4>Red Hat OpenShift</h4></div><p class="d">Clusters, projects, administration</p><div class="meter"><i data-w="95"></i></div><div class="pct">95%</div></div>
+      <div class="skill reveal" data-c="platform"><div class="top"><span class="ic"><svg class="icon icon-sm"><use href="#i-server"/></svg></span><h4>OpenShift Virtualization</h4></div><p class="d">KubeVirt, VM workloads</p><div class="meter"><i data-w="80"></i></div><div class="pct">80%</div></div>
+      <div class="skill reveal" data-c="platform"><div class="top"><span class="ic"><svg class="icon icon-sm"><use href="#i-terminal"/></svg></span><h4>Kubernetes &amp; Containers</h4></div><p class="d">Docker, Podman, SUSE Rancher</p><div class="meter"><i data-w="92"></i></div><div class="pct">92%</div></div>
+      <div class="skill reveal" data-c="platform"><div class="top"><span class="ic"><svg class="icon icon-sm"><use href="#i-terminal"/></svg></span><h4>Red Hat Linux</h4></div><p class="d">RHEL administration</p><div class="meter"><i data-w="85"></i></div><div class="pct">85%</div></div>
+      <div class="skill reveal" data-c="automation"><div class="top"><span class="ic"><svg class="icon icon-sm"><use href="#i-cog"/></svg></span><h4>Terraform</h4></div><p class="d">Infrastructure as Code</p><div class="meter"><i data-w="82"></i></div><div class="pct">82%</div></div>
+      <div class="skill reveal" data-c="automation"><div class="top"><span class="ic"><svg class="icon icon-sm"><use href="#i-code"/></svg></span><h4>Ansible</h4></div><p class="d">Automation &amp; configuration management</p><div class="meter"><i data-w="88"></i></div><div class="pct">88%</div></div>
+      <div class="skill reveal" data-c="cicd"><div class="top"><span class="ic"><svg class="icon icon-sm"><use href="#i-git"/></svg></span><h4>GitOps / Argo CD</h4></div><p class="d">Helm, GitOps deployments</p><div class="meter"><i data-w="88"></i></div><div class="pct">88%</div></div>
+      <div class="skill reveal" data-c="cicd"><div class="top"><span class="ic"><svg class="icon icon-sm"><use href="#i-cog"/></svg></span><h4>Jenkins / GitLab CI</h4></div><p class="d">Pipelines, build &amp; release</p><div class="meter"><i data-w="86"></i></div><div class="pct">86%</div></div>
+      <div class="skill reveal" data-c="cicd"><div class="top"><span class="ic"><svg class="icon icon-sm"><use href="#i-shield"/></svg></span><h4>DevSecOps &amp; Code Quality</h4></div><p class="d">SonarQube, JFrog / Nexus</p><div class="meter"><i data-w="78"></i></div><div class="pct">78%</div></div>
+      <div class="skill reveal" data-c="cloud"><div class="top"><span class="ic"><svg class="icon icon-sm"><use href="#i-cloud"/></svg></span><h4>AWS</h4></div><p class="d">EKS, EC2, VPC, Route 53, S3</p><div class="meter"><i data-w="80"></i></div><div class="pct">80%</div></div>
+      <div class="skill reveal" data-c="cloud"><div class="top"><span class="ic"><svg class="icon icon-sm"><use href="#i-cloud"/></svg></span><h4>Microsoft Azure</h4></div><p class="d">Azure administration</p><div class="meter"><i data-w="70"></i></div><div class="pct">70%</div></div>
+      <div class="skill reveal" data-c="ibm"><div class="top"><span class="ic"><svg class="icon icon-sm"><use href="#i-server"/></svg></span><h4>IBM Cloud Pak</h4></div><p class="d">CP4I, CP4D, CP4AIOps</p><div class="meter"><i data-w="82"></i></div><div class="pct">82%</div></div>
+      <div class="skill reveal" data-c="ibm"><div class="top"><span class="ic"><svg class="icon icon-sm"><use href="#i-chart"/></svg></span><h4>IBM Integration &amp; Monitoring</h4></div><p class="d">ACE, APIC, DataPower, MQ, EventStreams, ELK, Prometheus</p><div class="meter"><i data-w="78"></i></div><div class="pct">78%</div></div>
+    </div>
+  </section>
+
+  <!-- Certifications & education -->
+  <section id="certs">
+    <div class="two">
+      <div>
+        <div class="sec-head reveal">
+          <div class="ic"><svg class="icon"><use href="#i-award"/></svg></div>
+          <div><h2>Certifications</h2><p>Verified credentials</p></div>
+        </div>
+        <div class="certs">
+          <div class="cert reveal"><div class="medal"><svg class="icon icon-sm"><use href="#i-award"/></svg></div><div><h4>Red Hat Certified OpenShift Administrator</h4><p>Credential ID: 250-117-678</p></div></div>
+          <div class="cert reveal"><div class="medal"><svg class="icon icon-sm"><use href="#i-code"/></svg></div><div><h4>Red Hat Certified Engineer in Ansible</h4><p>Credential ID: 250-117-678</p></div></div>
+          <div class="cert reveal"><div class="medal"><svg class="icon icon-sm"><use href="#i-terminal"/></svg></div><div><h4>Red Hat Certified System Administrator</h4><p>Credential ID: 250-117-678</p></div></div>
+          <div class="cert reveal"><div class="medal"><svg class="icon icon-sm"><use href="#i-cloud"/></svg></div><div><h4>Microsoft Certified: Azure Administrator Associate</h4><p>Credential ID: 3147749A555600BC</p></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-head reveal">
+          <div class="ic"><svg class="icon"><use href="#i-book"/></svg></div>
+          <div><h2>Education</h2><p>Academic background</p></div>
+        </div>
+        <div class="edu reveal">
+          <div class="medal"><svg class="icon"><use href="#i-book"/></svg></div>
+          <h4>Bachelor of Technology</h4>
+          <p>Anna University, Chennai, India</p>
+          <p>2016 - 2020</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="padding-top:20px">
+    <div class="band reveal">
+      <div>
+        <h2>Let's connect</h2>
+        <p>Open to OpenShift, DevOps and platform engineering opportunities.</p>
+      </div>
+      <div class="cta">
+        <a class="btn btn-blue" href="mailto:kishoregandhipetro@gmail.com"><svg class="icon icon-sm"><use href="#i-mail"/></svg> Email me</a>
+        <a class="btn btn-line" href="https://linkedin.com/in/kishoregandhidevops" target="_blank" rel="noopener"><svg class="icon icon-sm"><use href="#i-linkedin"/></svg> LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="year"></span> Kishore Gandhi · DevOps Engineer - OpenShift</span>
+    <span>Dubai, UAE</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<button class="to-top" id="toTop" aria-label="Back to top"><svg class="icon"><use href="#i-up"/></svg></button>
+
+<script>
+(function () {
+  document.documentElement.classList.add('js');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+  // Toast message
+  var toastEl = document.getElementById('toast');
+  var toastTimer;
+  function showToast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2600);
+  }
+
+  // Copy email
+  var copyBtn = document.getElementById('copyBtn');
+  var copyLabel = document.getElementById('copyLabel');
+  copyBtn.addEventListener('click', function () {
+    var email = 'kishoregandhipetro@gmail.com';
+    function done() {
+      copyLabel.textContent = 'Copied!';
+      copyBtn.classList.add('ok');
+      showToast('Email copied: kishoregandhipetro@gmail.com');
+      setTimeout(function () { copyLabel.textContent = 'Copy email'; copyBtn.classList.remove('ok'); }, 1800);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(done, function () { location.href = 'mailto:' + email; });
+    } else { location.href = 'mailto:' + email; }
+  });
+
+  // Print / PDF: expand every experience entry, then restore the reader's view
+  var jobs = Array.prototype.slice.call(document.querySelectorAll('.job'));
+  var wasOpen = [];
+  window.addEventListener('beforeprint', function () {
+    wasOpen = jobs.map(function (d) { return d.open; });
+    jobs.forEach(function (d) { d.open = true; });
+  });
+  window.addEventListener('afterprint', function () {
+    jobs.forEach(function (d, i) { d.open = wasOpen[i]; });
+  });
+
+  // Download as PDF (embedded file, works on desktop and mobile)
+  var PDF_B64 = 'JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUiAvRjMgNCAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YxIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKMyAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYS1Cb2xkIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GMiAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjQgMCBvYmoKPDwKL0Jhc2VGb250IC9aYXBmRGluZ2JhdHMgL05hbWUgL0YzIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKNSAwIG9iago8PAovQ29udGVudHMgMTAgMCBSIC9NZWRpYUJveCBbIDAgMCA1OTUuMjc1NiA4NDEuODg5OCBdIC9QYXJlbnQgOSAwIFIgL1Jlc291cmNlcyA8PAovRm9udCAxIDAgUiAvUHJvY1NldCBbIC9QREYgL1RleHQgL0ltYWdlQiAvSW1hZ2VDIC9JbWFnZUkgXQo+PiAvUm90YXRlIDAgL1RyYW5zIDw8Cgo+PiAKICAvVHlwZSAvUGFnZQo+PgplbmRvYmoKNiAwIG9iago8PAovQ29udGVudHMgMTEgMCBSIC9NZWRpYUJveCBbIDAgMCA1OTUuMjc1NiA4NDEuODg5OCBdIC9QYXJlbnQgOSAwIFIgL1Jlc291cmNlcyA8PAovRm9udCAxIDAgUiAvUHJvY1NldCBbIC9QREYgL1RleHQgL0ltYWdlQiAvSW1hZ2VDIC9JbWFnZUkgXQo+PiAvUm90YXRlIDAgL1RyYW5zIDw8Cgo+PiAKICAvVHlwZSAvUGFnZQo+PgplbmRvYmoKNyAwIG9iago8PAovUGFnZU1vZGUgL1VzZU5vbmUgL1BhZ2VzIDkgMCBSIC9UeXBlIC9DYXRhbG9nCj4+CmVuZG9iago4IDAgb2JqCjw8Ci9BdXRob3IgKEtpc2hvcmUgR2FuZGhpKSAvQ3JlYXRpb25EYXRlIChEOjIwMjYxMTEyMTE0NjU0KzA0JzAwJykgL0NyZWF0b3IgKFwodW5zcGVjaWZpZWRcKSkgL0tleXdvcmRzICgpIC9Nb2REYXRlIChEOjIwMjYxMTEyMTE0NjU0KzA0JzAwJykgL1Byb2R1Y2VyIChSZXBvcnRMYWIgUERGIExpYnJhcnkgLSBcKG9wZW5zb3VyY2VcKSkgCiAgL1N1YmplY3QgKFwodW5zcGVjaWZpZWRcKSkgL1RpdGxlIChLaXNob3JlIEdhbmRoaSAtIERldk9wcyBFbmdpbmVlciAtIE9wZW5TaGlmdCkgL1RyYXBwZWQgL0ZhbHNlCj4+CmVuZG9iago5IDAgb2JqCjw8Ci9Db3VudCAyIC9LaWRzIFsgNSAwIFIgNiAwIFIgXSAvVHlwZSAvUGFnZXMKPj4KZW5kb2JqCjEwIDAgb2JqCjw8Ci9GaWx0ZXIgWyAvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGUgXSAvTGVuZ3RoIDM3MjkKPj4Kc3RyZWFtCkdiISNfPkM1J3AmcTBNWFcyS1NWJzlJQE9iZ1VsZyxZWUY6JG8+NCNIJytwLTNZaUAnJFE3OW9obD44MFosKVA9Wj9HZlgjMVJhXTo3XE9LPE5Uci1pYTVGWCUrWUVuY0pkY3IjKz8lbiJfYWNCX0wpRVtxOlQrZmVKMVRaa2BUInFZKmJbP2ZHNW00bCk5bVFNUFlZSElRTGlgKFVScSM7Y2JOcFpUWlllSSVlKGhiaCRoNU0uYGs3QWFtTnNfXEVGT1U+JDBuT0RTbm8pMyFRJE51OlRhJWxZRkNjVzVGVXJyaHFzMGBSUWxQcFd0Xj03S1BJZ21yaVgwLFxITzJcYWpkZ0hdYXFoKGQ7ZDpcQHVDS1xJI01HWT9yPmltcGA+O0c9dSkqRVtyKmwmJnRSZFVzMDljOTxIb2MrVVs8W2lGLiZGT2JJRTglYnElTmJdT08uKFgkRFkpTkZIYk81TS1Kaz1PIl1bb0cuJCE1cS8/bHFaWmg4U09aQ0ttW0tbUlExTDFDVmZTPm9hVmAyKkNpQjtjR0k5WzVHKC5bb2R0cXE9dTQrZi5ic2BKR1RyKUVjYVkwUT9SXGhuXTdeSzduPDRkVm1YWicvVkcqcFtnPSNPOWBQSmZAUFMvViJZPEFKRk1sXCcwQVtsU01rQTxwMGxMZD0rSyRdamVKaThTJGJMcEo9ZyQ7M1FNPThHQygpKiQoO3FQSyw3OjNIYk9PWk8vU15sU2ZXS0E2b2QyVk1iUENxcXFWW05rQnBNRlRpTDhmbTpTWm5Ebjx1IS9YVmIlbThNZlFAWk1NWnUzZHJFQV82NTtqbjtudHRcTShNKydORXFuNEFHZ2c+bC1XXUpuNGdjSjU8RUtZZGo5YmJdcSdZLF9kNyZqJmxvMkxIWUcyRXFGZHE6TEhRLmoqTVI0Ui1zZCVgdHBoKUtQWyxvWjk8Qy9MQiJ0TyluOVxyXD5tZltEUllbTzpRWytCW1JqUU1TVz9jclVibF1APDFhWyorJyEqYnE7KS5cWlAqUik3UmlxTj40VTVwUD44W01jX242Mm4mTFgwTmJkNihDXXBldU1WbjAjbjY1J0FZP1szNSUkO3QiPjhAPjskXE0+WDchWz9aO1U0OWxLbCc1KlAuU0h1SGooOUowTCpmKT1USj5HX3J0OyoiITBoTjE7OF1tXV4sWitEXilYMGwsNVlnVjdzS11nYVI2J3M2cCkjSktPXTMmYUtIUVI2SlIycl1wWGxMRmQqKCUvXzVCWjQnJlYyOWZma1lmTGlpMDJsOEktPWprRitRbG44clsoNVlgLzg9cHA2U1MrOixZKz5vNyhIPHApXGhsLWNQbScpclldblxBUzY3LVpMSlApTjY8UjZlTD1fOCtzOUo8WGJedSNfQnMhU2dIMkpEUGhPRiwzQVFJb1ckQiFqbUp1YFFhLldMJzFdTiolI15eNU1iVFoxZC1qbCRUc2xbTTFZI0M4QEZkJWlJbl5mcz5GSnRSbik0KloxJkwxdDBIYy0lMyVKRVVRcSpPIjMkUDRaKSFaKzRPK1orc1dMYFA/Vy1tLixsUztdaUgmcjVaU3R0NlFcIzZfak4yXmNTZS4uVygmK0Q2Pm46MkFVNU1rNj0tcFUrVmRrRnI9PyY6SC4jTEU+PTdkMSFBOiNgK2FkLCc8QD1jMjZhKDIvRzNtKChOWFdnSmljPCY5MlkjPUI4cz5PUWIobGk4TzRLInVATFQ5cS5MQm1TWWdqTDY/RUtgJCJEanIvZ2dGTTMsVD5yR3JjS1RyVnVEamdcMztoZWpGVnAjRlFkOXFFRTQrZmI5REdlY3IxUSYnO15mJlFZayEkWCRqRjNMJGNbNUBlNUpBTkFKUVZRN0JOYCY5UC1dc1FgYTlPJScsZ1AnKVlJZVE5Ly5zYFxONDhaQjNGJ0kmXVJFMEZJOCpmMUVHOzM4KFdCKyZvQVk/OiFdLGttTW5idC5RTGdHRC1POTBFdUxzVT06RCIjSk1Nc2hTYlkkYF1kKj5AJCY/LGBuQVw8WyJmW2ZFS0I9Pkk/aGwvN1djIlNDO2o3aDFgYktTa10tRXFNTFByZ0hZMSZaNVdjVW5RP2NnW2JvbUhEanAoSE1fXzhrbDJhaiNWMkJMWU41KDtnQiRZaiVSOGJQKU8/QltQODUxUnFKSkIqRG1NV3NnMU0+TTFZUmlcKzBRVWRAPTNQK21jcHMlJ2BdJWVqSEw/Iig8WkEpUj1lW1xwKFNKO1ZLWUtAaz44VVNCb3AxN2hhYDJsLG83N25xXU41SE82aE5OcjBwZSQwXFk+JTBOPSNxQFlrTmpJTiUrcWVhS1FYOzBFUUw4Rz5HRjJzal1ZTj8mSyVnUHFwaT0pKydqWj1gamVqLzdcWkE9TnFROU81ImRtcVUrOFFoWEhCPkIzMEJFYCssJFYvRHImWklIbnFTajMwZUxALSFWRWRDMz4tXFxSU01MTlZGOUg3aTtdNEBwT21wbmVebW5xRTdGbVZXT1A7ZlpRK1xpVkAkcz09WzAsTW0scHM0MjNQTyIoNS0mIVE1czM9RGlzYjBJQmZiJFBea1s1IihYdSZMbEtlUUhDUGNRb0VzYFUjZWx1XTs8IUElRylOTF5dQidLSDcnYnJnTnNsWFBQUUlsR0xyQjdKRC03ISUkV2FNdC5IRlcuQT04NixfQkpcLDpZKWxkbmNZOC1eOzxKcUFVYkZXJ2plYCEjaD0qZ1RiZVUpYEFMW1szOlBzPUdWUFRwVi06J0IkNF5mVSxvakczKzM5OjVSWEFbNDAmRGFZXT04L2NGRGp1a0hDSD4ybSs0blw8RHFbRmU/PisvRDNJWFAqcCUjSiVCPD9MUEchLFRybD42QGxQNkdPaVY0JV9cKVRcKms5SEBRWUp0WTVbIWIzMVxiKVhCYFIkWis2Z2YwRWVWN2omVEJRZClQLDczXEVxUCtdK1hNb1U7QmZWXkJWWzd1UCxJPCxcMCUjX1FkUSs+WFMhWHUmdSNlKUlwUzlUQiVvbiVyPjZrY0YqJWlGOiRGcVYwRE1qKjokP1dzYGE4ZGRlOFI8NzBmaEo1SHNVSF40JFI7XEFpTzlcaDM1OUFTK3JIcUw/amNLUFh0XUgpXV9GRydwbjBfODp1W1VYYFxXW0pLK1RqODImWWBBIzdmPUleKyUyMm5KKD4rL1pGU2guZ11wZj5oJk1rLVFtRlpvSVM1TCJPNWsqO0FCMzBaInBcbkdqbCJURFIqdSliWU5zb3NrPSYvV3RMSSxCKTEpRlc8T3E0LjkrPkVmQjdgJGBJNjUqa2FiOU90ayIvPiwiPig+bWYsXFBgaCQpX29nP15GUWM4IS91JUUyIyI7IkcvWDdncVdZRTVxb2VBRS9YOnBzTlZPQkZHVklbb1U/c1pqJ0NoJSNxI21kUyQuTUBMRSdWLkckLls+R2U0J0ZnOSMxR101PkE5Wj1XOVR0I1AmLEBVPCtUUiJOajAka0xyWWZbMWFOSkFURmtQOGkjdEAmPyYiITtLczdMMiowJWFVWzZZaFoxTj9tLzhHdCk4ZDVAPD4uT0w0IzVQLWBLLFUpSypcKVkvbVMwZjFyL0RgYTZOYENkOVJCZ09JTExialMmOzMnZyVnI15bLjkvcGVcSWYlLUxsOS1YWEM/MEYwTl0oUi5VWnRaRksnYjNXTmxCdCtSYUthTnJqVHEtNDpsVlksNmlZPF1Uc0JxJG5SaEBnakpIRichbnFWKlNGKEg6VkBpOXNFMjtWNmc5QWEvdGteXVYjX18iYDtHMzQnPjw6ayNmIWstNE0wZDAwKUxbUzxPIWMoWzRYQVdSWytdRVx1ZEBkY3NpUVpmNFwuUm42OUkoSV1sITE8L04jTS9ZXlhcdUguTlZSc1U5QmNhMiNbRmFjV3MrV1lQKiRkXElwIkRRUWdKQyNdZWByVFBgXHBmO2xZK3N1RnNrSDBbXGhxInE/KE8wQ1ZPb2kvNUxrRSkjWUpWWWBgV1FTdGsjU1NyTGEyL0ExZzU9S3NpXzJaKnJASFg2NjdZQms/QTRfNWplPi9sVjFpLzM6dWA0ZipKcHVQYHQqRS8kWXJsXClDVzMoTkgtKSNWSGdNK0NGYFovOUw4LiJqLEFoNFw6RGlEN1JWI3BTMW84LnRLWDQ8aFVWQSktIldJOXBNPG8iY1lUWGkucjJacDlwYlIkJmRRQTZaMWI9XG8lbFhuK0pQR0dgI2NkXytAUVloYjJjYVBiKEcyOVwvbD5hMyRySW9DJmssOVhmZGw3ZnBPdGZJLjByVjtJLF0rU2pKZWRtUEkrPjhUS2khQClFZ0tgYTgpaFFVQUkmUTVyL2poTW8zZlArLV5dQHRTQ15yQFkpP1ddZCNfamJibGI1UyYlNiNtblArdXBETEIvNG9oRyo9PXFZWllfaHQ5KmQ8ViNtVTUjV05APm5iKS88STBJKTNFWWxccjw1Q3AvLVYuQVslIm86KGAuUzRPUltgPi1fRywyUCQmJSUlUlQ7ZHM5V19jbmVLL09zRUtXIk9jO2Y3a1JkWzdDXTAhUGMwXCsoXmQ2VUknXW9tWz5IdChjKzsvZkQ6bjdaWj0xTUFGPTgjSkhqY2B0XihKMjxQMyZ1JWVDUzgqJlBrUlBJVy8pUmRGJSNSTnVoaU1McVI3ZEw4cCleXDZRT09mJlkiU2BGX0YmREtVbzhScjlcazkjX2ssWF9YPDVtcyRoRllkLCVcRTZ1VV1pTGlFSiJtWEJNSC1TSy9rVlVgV2NQN3E0LWEpZD1IZzRdTC5mXTczYCxtIV47LCpkWWpLSGA/XEwqR25ya091YCIvRkYsNGc3Vl5SZ2MxSyolI3JVNmxGdUZYYlJHYnBERDw5SGY5SFxwcydjOzAvLmEvPWg5IXIzc2RTWEAkIyVzKHBPUiVWSEVZWWAlZXUuLVhXKFhJIm8hLSFkRVBtKXV+PmVuZHN0cmVhbQplbmRvYmoKMTEgMCBvYmoKPDwKL0ZpbHRlciBbIC9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZSBdIC9MZW5ndGggMTkzOQo+PgpzdHJlYW0KR2IhI10+P0JRPSY6V2VEYllvJj44VzglWjA3PTRaRyNQJTtQLiEkVi4jcGh0Q2NTbj5mXyFlYTg5UHRjMmhDPVlsbVduW1tSUiRbbidiTWVDYHJMaVMpODJtRSZyVDclbFcmTU46K09VLy5ZNDpFJz8+Wkd1VGgtKD1iY0xyU0kqXTQ3RlwkU2VocVZKT1EtTl9xRmliOlUiWCVTbXRWWm5mciolcmFDUj9OKURYTCY4SU5tKidRLDxSMGVDKmB0JjBxcHVAXk9Kb2BwZVA0S1spbjdCbyxFJGsiMltrUlhaVU5fJT9RPyk4RDxZVTtGXSgwVnBqbCFMWD1KO2Q0IiJYIzdeZEYjKSZyIjhWZ1Era2dkYU89YD1tOGktRidUREQkQyFTUDVcXU9pIWxMY1BgMXVpU1hDaF4hQ0g5PEAmQj9AKCFPNTBJOm5xYS9vVHJcNk5fTkJyRVg8MUIjOnVMV09uM2NKbl0vKlltR2w6blwjJiJCMSFacTtYXiNkSzZUODA+J0EnRD1ac0VWNmVxUmEhOW1wYlcjZChtWSZETzU5XjxYJlRUZ1U3JyI7a0MuQSJIPiJFITo1WldXSD5JLGtTZV1UaT0/UkBEcWMtaC5NIT9hPzJSPktsXl86JzJrRV5bST88bjFDYVMkLkhGYVkxVEE7UGlJRmpXYj1UMWFdKGlQa3A6L3M2WD1VWkEna2ciS1Jha21JQWRdb1ZEaFlxOixxV249OiEiLTYoXWs/UjxZYyoyLjJUYmdrcGFkdFApTipMNEdkTU9CM0cuX0o4NicoVWlkZkwoRXNUSy8mWFkmbzlfbUpMZFdZRERbMDdjJmo9RCJvMGdPWlYvI2RtLzBtbVlEMz9IL0FoSSlPQ1slN1NjQEEmNU9nJFBpLmksYE5qTD5LbERvNURwUl86R08iJTEwLFM+ZFxjai5hSVdcMnVuQzN1bzExWHVeTk4wdVJHdGdDPVlKJWJ0Wi1fMUNUUXI/Tm1AaGNVUTttYlNrUC1YO00tTl4xUW5YVFpicUZLN0lmXjBVSjVWXWVXc0BpUyJBVmxcZlBDblpmRio0O1IuMCJmaV4/QlVfU18wQGdoL1Jyc3VgTmMuU1hSck1MSmhWV2ZgP2NJSUApPDcvQXI3T1xjOkBnaChwaiIyYDBCakEoanQ/NjV0SkJrQTsiKEFEWmEuY1IrRlpaJCgqKm4qJE9WWTooWCMtUXVicTNdXDY6Tig0O1BpNyFuX2QhdTArPT5bX2VPXDVLaFJrPU4qUVxMX24pZDE9Li5BRi4hW2ZKX20iKzpfRislNVoscylwSD5DcGlPSzUzXko4WDpGVkozNDRgY0czMUhTalNFSUpSMSlYL19bIStbS2xEXHE4QU5xSCIoUmtUbFJbWVEuNGtFMHQmRXFLXWV1cmhpcm9uM2hxJkczalZHVlEma2lxU0dFLVhKIURWKTAnVUIsJ1w5P19AX0xoVGAuOHU2NXU9IkYua3A4cXJUUlIoZ1szVF5bJFw1ajVWKj8wOVZqI109Lk4wMi9icDJRInBzMXNTUEQ8XFZaW1ZpQCUwSz86Jk4/UmRjakArb2pxM1MpJT5PP0dvQGJFVDIjSV5cYCMvNVpmWjQwWjhicCNEaS5tLHE2UVU3IWZeLmQ2aE5HM15zUVdaQU4raGFuZElZSlMicURhNzcrMDJMMmhHOUhWaUZRSS5DSlM2XmRAZE49QG5oPDxVO05GUW9sXD5jTktUPHMkJjlIP2pNZypyY0tsKy80UFpQKF4tLW0nMWBiLyMuaFVzNGF0VylRSVVUU1sxLj9zVUI1aS9zMjw4YCQqaE0/UEpAZTQ9WVxZTlUrbnVMT0FQczUxNSdsVjNRPDFvLyk4IkpYYypmTl5IQCwjbHFXRz5fXzF0PWsyXUApPl1MMDBkcSpEJ1RbQydxITBvOGVaTyhGQCpgLF0sP0paYTo6bz9tTktoNCc5NV1aaFY2NEJKXTxGLlFyXT1iUVc2MD50UT5WY0VRXDlpPCw8U2NUZThlb1tXVVMrYVAsSWUvUWlYay5Gcj5nPV9MOUZJMCVpOVdUZFBdVGQ0bE5jQkwmMDlaOWJnImhXUzg+QSJLUzROZnE0QVc4K1pQOV5faEJSYnFBVSFUJiwwKlJbO2tcYVEhTXVeS1V1KEUvRmBTQjAzO0g2JE5gIUg7K2M3JzpBWiIucklkQyJUIlcpOGJwQDZKbUhIK1djKlAtbFBtM1otI1spTEtnNislVUQ1dUEmRUdII1BrQSZBO1slXiI4REI+OCI+PnFKVW5gVDltS3E9b2JYalpBQmZvdCg1allhMVwsI2BaQG4yZiZkaytdWT1mJzFcRGQqWWlTMjM3YnVTYUwiKlQhRVVcUEtbOEtPKkVkTj1jdUpxUmxAL2prQ2xYYFBFTmFgLjNBI0BLJidFM3FENC84NmpMcCM3J1EmMTdSL09hK0xXbmREQFBOIXJ0YSMzM05OI1djW1xHNmhhPl42L3AwO2spR1QvQitncW5lRS82bElHJyk+KXJfb204bWIzIklDQS4tKVotbmZqKiVSIjZbRzBbKDAybDokWTV+PmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDEyCjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDA2MSAwMDAwMCBuIAowMDAwMDAwMTEyIDAwMDAwIG4gCjAwMDAwMDAyMTkgMDAwMDAgbiAKMDAwMDAwMDMzMSAwMDAwMCBuIAowMDAwMDAwNDE0IDAwMDAwIG4gCjAwMDAwMDA2MTggMDAwMDAgbiAKMDAwMDAwMDgyMiAwMDAwMCBuIAowMDAwMDAwODkwIDAwMDAwIG4gCjAwMDAwMDEyMDIgMDAwMDAgbiAKMDAwMDAwMTI2NyAwMDAwMCBuIAowMDAwMDA1MDg4IDAwMDAwIG4gCnRyYWlsZXIKPDwKL0lEIApbPDEyZDA2ZmZiZDE1OGI2NjBkYmFiOTkzZDhlNThiYmM0PjwxMmQwNmZmYmQxNThiNjYwZGJhYjk5M2Q4ZTU4YmJjND5dCiUgUmVwb3J0TGFiIGdlbmVyYXRlZCBQREYgZG9jdW1lbnQgLS0gZGlnZXN0IChvcGVuc291cmNlKQoKL0luZm8gOCAwIFIKL1Jvb3QgNyAwIFIKL1NpemUgMTIKPj4Kc3RhcnR4cmVmCjcxMTkKJSVFT0YK';
+  document.getElementById('pdfBtn').addEventListener('click', function () {
+    var bin = atob(PDF_B64), bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    var blob = new Blob([bytes], { type: 'application/pdf' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'Kishore_Gandhi_Resume.pdf';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+  });
+
+  // Skill filters
+  document.querySelectorAll('.fbtn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.fbtn').forEach(function (x) { x.classList.remove('on'); });
+      b.classList.add('on');
+      var f = b.dataset.f;
+      document.querySelectorAll('.skill').forEach(function (s) {
+        var show = f === 'all' || s.dataset.c === f;
+        s.classList.toggle('hide', !show);
+        if (show) s.querySelectorAll('.meter i').forEach(function (m) { m.style.width = m.dataset.w + '%'; });
+      });
+    });
+  });
+
+  // Count-up
+  function countUp(n) {
+    var t = parseFloat(n.dataset.count), d = parseInt(n.dataset.decimals || '0', 10), s = n.dataset.suffix || '';
+    if (reduce) { n.textContent = t.toFixed(d) + s; return; }
+    var st = null;
+    function step(ts) {
+      if (!st) st = ts;
+      var p = Math.min((ts - st) / 1100, 1);
+      n.textContent = (t * (1 - Math.pow(1 - p, 3))).toFixed(d) + s;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // Reveal, bars, counters
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var t = e.target;
+      t.classList.add('in');
+      t.querySelectorAll('.meter i').forEach(function (m) { m.style.width = m.dataset.w + '%'; });
+      t.querySelectorAll('[data-count]').forEach(countUp);
+      io.unobserve(t);
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(function (r) { io.observe(r); });
+
+  // Scroll spy + back to top
+  var spy = Array.prototype.slice.call(document.querySelectorAll('[data-spy]'));
+  var toTop = document.getElementById('toTop');
+  var secs = spy.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  window.addEventListener('scroll', function () {
+    toTop.classList.toggle('show', window.scrollY > 700);
+    var cur = -1;
+    secs.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < 160) cur = i; });
+    spy.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  }, { passive: true });
+  toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
